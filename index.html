@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advokat Ružica Blagojević | Zvanična stranica</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* GLOBAL */
+body{
+margin:0;
+font-family:'Lato', sans-serif;
+background:#696969; /* tamno plava elegantna */
+color:#F5F5F5;
+}
+
+html{scroll-behavior:smooth;}
+
+/* ANIMACIJE */
+.animate{
+opacity:0;
+transform:translateY(50px);
+transition:0.8s;
+}
+.animate.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#0b1a2f; /* ISTA BOJA KAO LOGO */
+padding:10px 40px;
+display:flex;
+justify-content:flex-start;
+align-items:center;
+z-index:1000;
+box-shadow:0 5px 20px rgba(0,0,0,0.4);
+border-bottom:1px solid rgba(201,162,39,0.25);
+}
+
+/* UNUTRAŠNJI KONTEJNER */
+.header-inner{
+width:100%;
+max-width:1200px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* LOGO + INFO */
+.logo-box{
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+.logo-box img{
+height:90px; /* malo manji = elegantnije */
+}
+
+/* INFO (email, telefon...) */
+.info{
+display:flex;
+gap:25px;
+font-size:13px;
+color:#d1d5db;
+}
+.info a{
+color:#d1d5db;
+text-decoration:none;
+transition:0.3s;
+display:block;
+}
+
+.info a:hover{
+color:#c9a227;
+}
+/* NAVIGACIJA */
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#c9a227;
+font-weight:600;
+font-size:15px;
+position:relative;
+transition:0.3s;
+}
+
+/* HOVER EFEKAT */
+nav a:hover{
+color:#ffffff;
+}
+
+/* LINIJA ISPOD LINKA (premium efekat) */
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#c9a227;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+.hero{
+position:relative;
+height:100vh;
+margin-top:120px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+/* POZADINA (JUSTICE) */
+.hero::before{
+content:"";
+position:left;
+top:0;
+left:0;
+width:45%;
+height:100%;
+background:url('justice.jpg') center/cover no-repeat;
+opacity:0.18;
+z-index:0;
+}
+
+/* overlay da bude “skupo” */
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(18,26,38,0.65);
+z-index:1;
+}
+
+/* HERO CONTENT */
+.hero-content{
+position:relative;
+z-index:2;
+text-align:center;
+max-width:600px;
+}
+
+.hero-content p{
+margin-bottom:20px;
+}
+
+
+/* FORM */
+.form-box{
+background:#ffffff;
+color:#000;
+padding:20px;
+border-radius:10px;
+width:340px;
+margin:0 auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.form-box input,
+.form-box textarea{
+width:100%;
+margin-bottom:10px;
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.form-box button{
+width:100%;
+padding:10px;
+background:#14213d;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+/* SECTION */
+section{
+padding:90px 60px;
+}
+
+/* NASLOVI */
+h2{
+text-align:left;
+margin-bottom:50px;
+position:relative;
+padding-bottom:40px;
+color:#c9a227; /* zlatna */
+font-weight:bold;
+}
+
+/* SIVI SEPARATOR (umjesto žute linije) */
+section{
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* ABOUT */
+.about{
+display:flex;
+gap:40px;
+align-items:stretch; /* KLJUČNO */
+}
+
+/* LIJEVA STRANA */
+.about .text-box{
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+align-items:flex-start;
+}
+.text-box p{
+font-size:16.5px;
+line-height:1.8;
+margin-bottom:15px;
+text-align:justify;
+color:#f1f1f1;
+}
+.text-box{
+padding:35px;
+}
+
+/* DESNA SLIKA */
+.about img{
+width:50%;
+height:100%; /* KLJUČNO */
+object-fit:cover;
+border-radius:12px;
+}
+
+/* SERVICES */
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+.card .title{
+color:#c9a227;
+font-size:21px;
+font-weight:800;
+text-shadow:0 2px 8px rgba(0,0,0,0.85);
+letter-spacing:1px;
+
+background:rgba(0,0,0,0.35); /* suptilna pozadina */
+backdrop-filter:blur(6px);
+border:1px solid rgba(201,162,39,0.2);
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+padding:8px 14px;
+border-radius:6px;
+
+border:1px solid rgba(201,162,39,0.35); /* zlatni okvir */
+backdrop-filter:blur(2px);
+}
+.card{
+position:relative;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.03);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.title{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+text-align:center;
+
+font-size:20px;
+font-weight:700;
+color:#fff;
+text-shadow:0 2px 8px rgba(0,0,0,0.8);
+
+letter-spacing:1px;
+padding:5px 10px;
+}
+
+.btn{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,0.6);
+padding:6px 10px;
+font-size:12px;
+color:white;
+}
+
+/* OVERLAY */
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.88);
+color:rgb(229, 238, 240);
+padding:15px;
+opacity:0;
+transition:0.3s;
+font-size:12px;
+overflow:auto;
+}
+
+.card.active .overlay{
+opacity:1;
+}
+
+/* MISIJA */
+.mv{
+display:flex;
+gap:40px;
+align-items:stretch;
+padding:90px 60px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+background:transparent;
+}
+.text-box{
+background:rgba(255,255,255,0.03);
+padding:30px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+/* KONTAKT PREMIUM */
+.contact-wrapper{
+display:flex;
+gap:40px;
+align-items:stretch;
+}
+
+.contact-card{
+background:rgba(255,255,255,0.03);
+padding:30px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+width:40%;
+}
+
+.contact-card p{
+margin-bottom:15px;
+font-size:15px;
+}
+
+.map-card{
+width:60%;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.map-card iframe{
+width:100%;
+height:100%;
+min-height:320px;
+border:0;
+}
+
+/* FOOTER */
+footer{
+text-align:right;
+padding:20px;
+background:#0d141f;
+color:#aaa;
+}
+
+</style>
+</head>
+<meta name="description" content="Advokat Ružica Blagojević Doboj - pravna pomoć i zastupanje u oblasti građanskog, porodičnog, upravnog i prekršajnog prava.">
+<meta name="keywords" content="advokat Doboj, advokat Ružica Blagojević, pravnik Doboj, advokat BiH">
+<meta name="author" content="Ružica Blagojević">
+<meta name="robots" content="index, follow">
+
+<!-- MOBILE + GOOGLE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- OPEN GRAPH (za dijeljenje na Facebook/Viber) -->
+<meta property="og:title" content="Advokat Ružica Blagojević">
+<meta property="og:description" content="Pravna pomoć i zastupanje u Doboju.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+
+<!-- GOOGLE -->
+<meta name="robots" content="index, follow">
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo-box">
+<img src="logo.png">
+
+<div class="info">
+
+<a href="mailto:blagojevicruzica1960@gmail.com">
+📧 blagojevicruzica1960@gmail.com
+</a>
+
+<a href="tel:+38766810859">
+📞 +387 66 810 859
+</a>
+
+<a href="https://www.google.com/maps?q=Svetog+Save+24+Doboj" target="_blank">
+📍 Svetog Save 24, Doboj
+</a>
+
+</div>
+</div>
+
+<nav>
+<a href="#home">Početna</a>
+<a href="#about">O meni</a>
+<a href="#services">Oblasti rada</a>
+<a href="#mission">Misija</a>
+<a href="#vision">Vizija</a>
+<a href="#contact">Kontakt</a>
+</nav>
+
+</div>
+</header>
+<!-- HERO -->
+<section class="hero" id="home">
+
+<div class="hero-content animate">
+
+<h1>Advokat Ružica Blagojević</h1>
+<p>
+Pružanje pravnih usluga uz individualan pristup i visok nivo profesionalne odgovornosti.
+</p>
+
+<form class="form-box"
+action="https://formsubmit.co/blagojevicruzica1960@gmail.com"
+method="POST">
+
+<input type="text" name="ime" placeholder="Vaše ime">
+<input type="text" name="prezime" placeholder="Vaše prezime">
+<input type="email" name="email" placeholder="Vaš email">
+<input type="text" name="kontakt" placeholder="Vaš kontakt">
+<textarea name="poruka" placeholder="Vaša poruka"></textarea>
+
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="Novi upit sa sajta">
+
+<button type="submit">Pošaljite upit</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- O MENI -->
+<section class="about animate" id="about">
+
+<div class="text-box">
+<h2>O MENI</h2>
+
+<p>
+Advokat sam sa dugogodišnjim iskustvom u različitim oblastima prava. Advokatura za mene predstavlja odgovornu i ozbiljnu službu zaštite prava svakog pojedinca.<br><br>
+
+U radu se vodim principima:<br>
+- stručnosti<br>
+- savjesnosti<br>
+- povjerljivosti<br>
+- odgovornosti prema stranci.<br><br>
+
+Smatram da advokatski poziv zahtijeva ne samo poznavanje propisa, već i razumijevanje životnih situacija u kojima se stranke nalaze.<br><br>
+
+Moj cilj je da klijent dobije jasno objašnjenje svog pravnog položaja, mogućnosti koje mu stoje na raspolaganju i posljedice svake donesene odluke.
+</p>
+
+</div>
+
+<img src="ruza.png">
+
+</section>
+
+<!-- OBLASTI RADA -->
+<section class="animate" id="services">
+
+<h2>OBLASTI RADA</h2>
+
+<div class="grid">
+
+<div class="card" onclick="toggle(this)">
+<img src="gradjansko.jpg">
+<div class="title">Građansko pravo</div>
+<div class="btn">Pogledaj više</div>
+<div class="overlay">
+~Sastavljanje tužbi i podnesaka<br>
+~Sastavljanje i pregled ugovora<br>
+~Naknada štete<br>
+~Zastupanje u sporovima oko vlasništva<br>
+~Nasljednopravni zahtjevi i podjela imovine<br>
+~Parnični, vanparnični i izvršni postupci
+</div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+<img src="porodicno.jpg">
+<div class="title">Porodično pravo</div>
+<div class="btn">Pogledaj više</div>
+<div class="overlay">
+~Zastupanje u sporovima između članova porodice<br>
+~Razvod braka<br>
+~Povjeravanje djece i izdržavanje<br>
+~Podjela bračne imovine<br>
+~Zaštita prava djeteta<br>
+~Pravna pomoć u postupcima usvajanja djeteta
+</div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+<img src="upravno.jpg">
+<div class="title">Upravno i radno pravo</div>
+<div class="btn">Pogledaj više</div>
+<div class="overlay">
+~Upravni postupci i upravni sporovi<br>
+~Žalbe protiv rješenja organa uprave<br>
+~Tužba u upravnim sporovima<br>
+~Analiza zakonitosti upravnih akata<br>
+~Zastupanje u inspecijskim postupcima<br>
+~Zaštita prava iz radnog odnosa<br>
+~Izrada i analiza ugovora o radu i ugovora van radnog odnosa<br>
+~Pravna pomoć pri zasnivanju i prestanku radnog odnosa <br>
+~Pravna pomoć u slučaju mobinga i/ili diskriminacije<br>
+~Izrada internih akata poslodavca
+</div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+<img src="prekrsajno.jpg">
+<div class="title">Prekršajno pravo</div>
+<div class="btn">Pogledaj više</div>
+<div class="overlay">
+~Zastupanje o prekršajnim postupcima pred sudovima<br>
+~Sastavljanje žalbi na prekršaje naloge i odluke<br>
+~Zastupanje pred policijskim i inspekcijskim organima<br>
+~Analiza zakonitosti izrečenih kazni i mjera<br>
+~Pokretanje postupka za ublažavanje ili ukidanje sankcija<br>
+~​Saobraćajni prekršaji<br>
+~Oduzimanje vozačkih dozvola<br>
+~Novčane kazne i prekršajni nalozi<br>
+~Kršenje komunalnih propisa
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- MISIJA + VIZIJA -->
+<section class="mv animate" id="mission">
+
+<div class="text-box">
+<h2>MISIJA</h2>
+<p>
+
+Kao advokat, moja misija je da zastupam svoje klijente sa integritetom, profesionalizmom i saosjećanjem. Težim postizanju pravde i pravičnosti u svakom slučaju koji obrađujem, osiguravajući da klijenti dobiju pažnju i podršku koju zaslužuju tokom izazovnih pravnih pitanja.
+</p>
+</div>
+
+<div id="vision" class="text-box">
+<h2>VIZIJA</h2>
+<p>
+Moja vizija kao advokat je pružanje stručne i pouzdane pravne pomoći uz zaštitu prava i interesa svakog klijenta. Primarni cilj je izgradnja povjerenja kroz profesionalnost, odgovornost i dosljedno postizanje najboljih mogućih rezultata.
+</p>
+</div>
+
+</section>
+
+<!-- KONTAKT -->
+ <section class="animate" id="contact">
+<div class="contact-wrapper">
+
+<div class="contact-card">
+<h3 style="margin-bottom:20px; color:#c9a227;">KONTAKT INFORMACIJE</h3>
+
+<p><strong>📞 Telefon:</strong> +387 66 810 859</p>
+<p><strong>📧 Email:</strong> blagojevicruzica1960@gmail.com</p>
+<p><strong>📍  Adresa:</strong> Svetog Save 24, 74000 Doboj</p>
+
+</div>
+<div class="map-card">
+<iframe src="https://maps.google.com/maps?q=Svetog%20Save%2024%20Doboj&output=embed"></iframe>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Copyright © Advokat Ružica Blagojević 2026
+</footer>
+
+<script>
+function toggle(card){
+card.classList.toggle("active");
+}
+
+const elements=document.querySelectorAll(".animate");
+
+window.addEventListener("scroll",()=>{
+elements.forEach(el=>{
+const pos=el.getBoundingClientRect().top;
+if(pos<window.innerHeight-100){
+el.classList.add("show");
+}
+});
+});
+document.querySelector(".form-box").addEventListener("submit", function(){
+    setTimeout(function(){
+        alert("Hvala na upitu! Uskoro ćete biti kontaktirani.");
+    }, 500);
+});
+</script>
+
+</body>
+</html>
