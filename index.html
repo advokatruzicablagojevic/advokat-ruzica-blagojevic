@@ -1,416 +1,585 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advokat Ružica Blagojević | Zvanična stranica</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advokat Ružica Blagojević | Zvanična stranica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta name="description" content="Advokat Ružica Blagojević Doboj - pravna pomoć i zastupanje u oblasti građanskog, porodičnog, upravnog i prekršajnog prava.">
+    <meta name="keywords" content="advokat Doboj, advokat Ružica Blagojević, pravnik Doboj, advokat BiH">
+    <meta name="author" content="Ružica Blagojević">
+    <meta name="robots" content="index, follow">
+    <!-- OPEN GRAPH (za dijeljenje na Facebook/Viber) -->
+    <meta property="og:title" content="Advokat Ružica Blagojević">
+    <meta property="og:description" content="Pravna pomoć i zastupanje u Doboju.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
 
-/* GLOBAL */
-body{
-margin:0;
-font-family:'Lato', sans-serif;
-background:#696969; /* tamno plava elegantna */
-color:#F5F5F5;
+    <style>
+
+            /* GLOBAL */
+            body {
+                margin: 0;
+                font-family: 'Lato', sans-serif;
+                background: #696969; /* tamno plava elegantna */
+                color: #F5F5F5;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* ANIMACIJE */
+            .animate {
+                opacity: 0;
+                transform: translateY(50px);
+                transition: 0.8s;
+            }
+
+                .animate.show {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+            /* HEADER */
+            header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background: #0b1a2f; /* ISTA BOJA KAO LOGO */
+                padding: 10px 40px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                z-index: 1000;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+                border-bottom: 1px solid rgba(201,162,39,0.25);
+            }
+
+            /* UNUTRAŠNJI KONTEJNER */
+            .header-inner {
+                width: 100%;
+                max-width: 1200px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            /* LOGO + INFO */
+            .logo-box {
+                display: flex;
+                align-items: center;
+                gap: 25px;
+            }
+
+                .logo-box img {
+                    height: 90px; /* malo manji = elegantnije */
+                }
+
+            /* INFO (email, telefon...) */
+            .info {
+                display: flex;
+                gap: 25px;
+                font-size: 13px;
+                color: #d1d5db;
+            }
+
+                .info a {
+                    color: #d1d5db;
+                    text-decoration: none;
+                    transition: 0.3s;
+                    display: block;
+                }
+
+                    .info a:hover {
+                        color: #c9a227;
+                    }
+            /* NAVIGACIJA */
+            nav a {
+                margin-left: 25px;
+                text-decoration: none;
+                color: #c9a227;
+                font-weight: 600;
+                font-size: 15px;
+                position: relative;
+                transition: 0.3s;
+            }
+
+                /* HOVER EFEKAT */
+                nav a:hover {
+                    color: #ffffff;
+                }
+
+                /* LINIJA ISPOD LINKA (premium efekat) */
+                nav a::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -5px;
+                    width: 0%;
+                    height: 2px;
+                    background: #c9a227;
+                    transition: 0.3s;
+                }
+
+                nav a:hover::after {
+                    width: 100%;
+                }
+
+            /* HERO */
+            .hero {
+                position: relative;
+                height: 100vh;
+                margin-top: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+                /* POZADINA (JUSTICE) */
+                .hero::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 45%;
+                    height: 100%;
+                    background: url('justice.jpg') center/cover no-repeat;
+                    opacity: 0.18;
+                    z-index: 0;
+                }
+
+                /* overlay da bude “skupo” */
+                .hero::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(18,26,38,0.65);
+                    z-index: 1;
+                }
+
+            /* HERO CONTENT */
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                max-width: 600px;
+            }
+
+                .hero-content p {
+                    margin-bottom: 20px;
+                }
+
+
+            /* FORM */
+            .form-box {
+                background: #ffffff;
+                color: #000;
+                padding: 20px;
+                border-radius: 10px;
+                width: 340px;
+                margin: 0 auto;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            }
+
+                .form-box input,
+                .form-box textarea {
+                    width: 100%;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .form-box button {
+                    width: 100%;
+                    padding: 10px;
+                    background: #14213d;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                }
+
+            /* SECTION */
+            section {
+                padding: 90px 60px;
+            }
+
+            /* NASLOVI */
+            h2 {
+                text-align: left;
+                margin-bottom: 50px;
+                position: relative;
+                padding-bottom: 40px;
+                color: #c9a227; /* zlatna */
+                font-weight: bold;
+            }
+
+            /* SIVI SEPARATOR (umjesto žute linije) */
+            section {
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+            /* ABOUT */
+            .about {
+                display: flex;
+                gap: 40px;
+                align-items: stretch; /* KLJUČNO */
+            }
+
+                /* LIJEVA STRANA */
+                .about .text-box {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+            .text-box p {
+                font-size: 16.5px;
+                line-height: 1.8;
+                margin-bottom: 15px;
+                text-align: justify;
+                color: #f1f1f1;
+            }
+
+            .text-box {
+                padding: 35px;
+            }
+
+            /* DESNA SLIKA */
+            .about img {
+                width: 50%;
+                height: 100%; /* KLJUČNO */
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+            /* SERVICES */
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                gap: 20px;
+            }
+
+            .card .title {
+                color: #c9a227;
+                font-size: 21px;
+                font-weight: 800;
+                text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+                letter-spacing: 1px;
+                background: rgba(0,0,0,0.35); /* suptilna pozadina */
+                backdrop-filter: blur(6px);
+                border: 1px solid rgba(201,162,39,0.2);
+                box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+                padding: 8px 14px;
+                border-radius: 6px;
+                border: 1px solid rgba(201,162,39,0.35); /* zlatni okvir */
+                backdrop-filter: blur(2px);
+            }
+
+            .card {
+                position: relative;
+                border-radius: 10px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                .card:hover {
+                    transform: translateY(-8px) scale(1.03);
+                }
+
+                .card img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                }
+
+            .title {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                font-size: 18px;
+                width:90%;
+                font-weight: 700;
+                color: #fff;
+                text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+                letter-spacing: 1px;
+                padding: 5px 10px;
+            }
+
+            .btn {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.6);
+                padding: 6px 10px;
+                font-size: 12px;
+                color: white;
+            }
+
+            /* OVERLAY */
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.88);
+                color: rgb(229, 238, 240);
+                padding: 15px;
+                opacity: 0;
+                transition: 0.3s;
+                font-size: 12px;
+                overflow: auto;
+            }
+
+            .card.active .overlay {
+                opacity: 1;
+            }
+
+            /* MISIJA */
+            .mv {
+                display: flex;
+                gap: 40px;
+                align-items: stretch;
+                padding: 90px 60px;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+                background: transparent;
+            }
+
+            .text-box {
+                background: rgba(255,255,255,0.03);
+                padding: 30px;
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.15);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                transition: 0.3s;
+            }
+
+            /* KONTAKT PREMIUM */
+            .contact-wrapper {
+                display: flex;
+                gap: 40px;
+                align-items: stretch;
+            }
+
+            .contact-card {
+                background: rgba(255,255,255,0.03);
+                padding: 30px;
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.15);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                width: 40%;
+            }
+
+                .contact-card p {
+                    margin-bottom: 15px;
+                    font-size: 15px;
+                }
+
+            .map-card {
+                width: 60%;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+
+                .map-card iframe {
+                    width: 100%;
+                    height: 100%;
+                    min-height: 320px;
+                    border: 0;
+                }
+
+            /* FOOTER */
+            footer {
+                text-align: right;
+                padding: 20px;
+                background: #0d141f;
+                color: #aaa;
+            }
+            /* =========================================
+           MOBILNI PRIKAZ (TELEFONI)
+        ========================================= */
+            @media screen and (max-width: 768px) {
+body {
+        overflow-x: hidden;
+    }
+    *{
+    box-sizing:border-box;
+}
+                /* HEADER */
+                header {
+                   position: relative;
+    padding: 10px;
+    width:100%;
+    box-sizing:border-box;
 }
 
-html{scroll-behavior:smooth;}
+                .header-inner {
+                    flex-direction: column;
+                    align-items: center;
+                }
 
-/* ANIMACIJE */
-.animate{
-opacity:0;
-transform:translateY(50px);
-transition:0.8s;
-}
-.animate.show{
-opacity:1;
-transform:translateY(0);
-}
+                .logo-box {
+                    flex-direction: column;
+                    gap: 10px;
+                }
 
-/* HEADER */
-header{
-position:fixed;
-top:0;
-width:100%;
-background:#0b1a2f; /* ISTA BOJA KAO LOGO */
-padding:10px 40px;
-display:flex;
-justify-content:flex-start;
-align-items:center;
-z-index:1000;
-box-shadow:0 5px 20px rgba(0,0,0,0.4);
-border-bottom:1px solid rgba(201,162,39,0.25);
-}
+                    .logo-box img {
+                        height: 50px;
+                    }
 
-/* UNUTRAŠNJI KONTEJNER */
-.header-inner{
-width:100%;
-max-width:1200px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-/* LOGO + INFO */
-.logo-box{
-display:flex;
-align-items:center;
-gap:25px;
-}
-
-.logo-box img{
-height:90px; /* malo manji = elegantnije */
-}
-
-/* INFO (email, telefon...) */
-.info{
-display:flex;
-gap:25px;
-font-size:13px;
-color:#d1d5db;
+                .info {
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    text-align:center;
+    font-size:11px;
+    width:100%;
 }
 .info a{
-color:#d1d5db;
-text-decoration:none;
-transition:0.3s;
-display:block;
+    word-break: break-word;
+    display:block;
 }
 
-.info a:hover{
-color:#c9a227;
+                /* NAVIGACIJA */
+                nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+    margin-top:10px;
 }
-/* NAVIGACIJA */
+
 nav a{
-margin-left:25px;
-text-decoration:none;
-color:#c9a227;
-font-weight:600;
-font-size:15px;
-position:relative;
-transition:0.3s;
+    margin:0;
+    font-size:13px;
+    padding:4px 8px;
+}
+                /* HERO */
+                .hero {
+                    margin-top: 20px;
+                    height:auto;
+    min-height: auto;
+    padding: 30px 15px;
 }
 
-/* HOVER EFEKAT */
-nav a:hover{
-color:#ffffff;
-}
+                .hero-content {
+                    width: 100%;
+                }
 
-/* LINIJA ISPOD LINKA (premium efekat) */
-nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-5px;
-width:0%;
-height:2px;
-background:#c9a227;
-transition:0.3s;
-}
+                    .hero-content h1 {
+                        font-size:28px;
+    line-height:1.2;
+                    }
 
-nav a:hover::after{
-width:100%;
-}
+                    .hero-content p {
+                        font-size: 15px;
+                    }
 
-/* HERO */
-.hero{
-position:relative;
-height:100vh;
-margin-top:120px;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-}
-
-/* POZADINA (JUSTICE) */
-.hero::before{
-content:"";
-position:left;
-top:0;
-left:0;
-width:45%;
-height:100%;
-background:url('justice.jpg') center/cover no-repeat;
-opacity:0.18;
-z-index:0;
-}
-
-/* overlay da bude “skupo” */
-.hero::after{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(18,26,38,0.65);
-z-index:1;
-}
-
-/* HERO CONTENT */
-.hero-content{
-position:relative;
-z-index:2;
-text-align:center;
-max-width:600px;
-}
-
-.hero-content p{
-margin-bottom:20px;
-}
-
-
-/* FORM */
-.form-box{
-background:#ffffff;
-color:#000;
-padding:20px;
-border-radius:10px;
-width:340px;
-margin:0 auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
+                /* FORMA */
+                .form-box {
+                    width: 100%;
+                    max-width: 100%;
+                    box-sizing: border-box;
+                }
 .form-box input,
-.form-box textarea{
-width:100%;
-margin-bottom:10px;
-padding:10px;
-border:1px solid #ccc;
-border-radius:5px;
+.form-box textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+                /* SEKCIJE */
+                section {
+                    padding: 60px 20px;
+                }
+
+                /* O MENI */
+      .about {
+    flex-direction: column;
 }
 
-.form-box button{
-width:100%;
-padding:10px;
-background:#14213d;
-color:white;
-border:none;
-cursor:pointer;
+.about img {
+    width: 100%;
+    height: auto;
 }
 
-/* SECTION */
-section{
-padding:90px 60px;
-}
-
-/* NASLOVI */
-h2{
-text-align:left;
-margin-bottom:50px;
-position:relative;
-padding-bottom:40px;
-color:#c9a227; /* zlatna */
-font-weight:bold;
-}
-
-/* SIVI SEPARATOR (umjesto žute linije) */
-section{
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-/* ABOUT */
-.about{
-display:flex;
-gap:40px;
-align-items:stretch; /* KLJUČNO */
-}
-
-/* LIJEVA STRANA */
 .about .text-box{
-display:flex;
-flex-direction:column;
-justify-content:flex-start;
-align-items:flex-start;
+    width:100%;
+    max-width:100%;
 }
+
 .text-box p{
-font-size:16.5px;
-line-height:1.8;
-margin-bottom:15px;
-text-align:justify;
-color:#f1f1f1;
-}
-.text-box{
-padding:35px;
+    text-align:left;
+    word-break:normal;
 }
 
-/* DESNA SLIKA */
-.about img{
-width:50%;
-height:100%; /* KLJUČNO */
-object-fit:cover;
-border-radius:12px;
+.text-box {
+    padding: 20px;
 }
-
-/* SERVICES */
-.grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
-.card .title{
-color:#c9a227;
-font-size:21px;
-font-weight:800;
-text-shadow:0 2px 8px rgba(0,0,0,0.85);
-letter-spacing:1px;
-
-background:rgba(0,0,0,0.35); /* suptilna pozadina */
-backdrop-filter:blur(6px);
-border:1px solid rgba(201,162,39,0.2);
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
-padding:8px 14px;
-border-radius:6px;
-
-border:1px solid rgba(201,162,39,0.35); /* zlatni okvir */
-backdrop-filter:blur(2px);
-}
+                /* OBLASTI RADA */
+                .grid {
+                    grid-template-columns: 1fr;
+                }
 .card{
-position:relative;
-border-radius:10px;
-overflow:hidden;
-cursor:pointer;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-8px) scale(1.03);
+    width:100%;
 }
 
 .card img{
-width:100%;
-height:200px;
-object-fit:cover;
+    height:250px;
 }
 
-.title{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%, -50%);
-text-align:center;
+                /* MISIJA I VIZIJA */
+                .mv {
+                    flex-direction: column;
+                    padding: 60px 20px;
+                }
 
-font-size:20px;
-font-weight:700;
-color:#fff;
-text-shadow:0 2px 8px rgba(0,0,0,0.8);
+                /* KONTAKT */
+                .contact-wrapper {
+                    flex-direction: column;
+                }
 
-letter-spacing:1px;
-padding:5px 10px;
+                .contact-card {
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .map-card {
+                    width: 100%;
+                }
+
+                /* NASLOVI */
+                h2 {
+                    font-size: 28px;
+                    margin-bottom: 30px;
+                    padding-bottom: 20px;
+                }
+/* NASLOVI KARTICA */
+.title {
+    font-size: 16px;
 }
+                /* FOOTER */
+                footer {
+                    text-align: center;
+                    font-size: 13px;
+                }
+            }
+    </style>
 
-.btn{
-position:absolute;
-bottom:10px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(0,0,0,0.6);
-padding:6px 10px;
-font-size:12px;
-color:white;
-}
 
-/* OVERLAY */
-.overlay{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.88);
-color:rgb(229, 238, 240);
-padding:15px;
-opacity:0;
-transition:0.3s;
-font-size:12px;
-overflow:auto;
-}
-
-.card.active .overlay{
-opacity:1;
-}
-
-/* MISIJA */
-.mv{
-display:flex;
-gap:40px;
-align-items:stretch;
-padding:90px 60px;
-border-bottom:1px solid rgba(255,255,255,0.08);
-background:transparent;
-}
-.text-box{
-background:rgba(255,255,255,0.03);
-padding:30px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.15);
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-transition:0.3s;
-}
-
-/* KONTAKT PREMIUM */
-.contact-wrapper{
-display:flex;
-gap:40px;
-align-items:stretch;
-}
-
-.contact-card{
-background:rgba(255,255,255,0.03);
-padding:30px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,0.15);
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-width:40%;
-}
-
-.contact-card p{
-margin-bottom:15px;
-font-size:15px;
-}
-
-.map-card{
-width:60%;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-border:1px solid rgba(255,255,255,0.1);
-}
-
-.map-card iframe{
-width:100%;
-height:100%;
-min-height:320px;
-border:0;
-}
-
-/* FOOTER */
-footer{
-text-align:right;
-padding:20px;
-background:#0d141f;
-color:#aaa;
-}
-
-</style>
 </head>
-<meta name="description" content="Advokat Ružica Blagojević Doboj - pravna pomoć i zastupanje u oblasti građanskog, porodičnog, upravnog i prekršajnog prava.">
-<meta name="keywords" content="advokat Doboj, advokat Ružica Blagojević, pravnik Doboj, advokat BiH">
-<meta name="author" content="Ružica Blagojević">
-<meta name="robots" content="index, follow">
 
-<!-- MOBILE + GOOGLE -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- OPEN GRAPH (za dijeljenje na Facebook/Viber) -->
-<meta property="og:title" content="Advokat Ružica Blagojević">
-<meta property="og:description" content="Pravna pomoć i zastupanje u Doboju.">
-<meta property="og:image" content="logo.png">
-<meta property="og:type" content="website">
-
-<!-- GOOGLE -->
-<meta name="robots" content="index, follow">
 <body>
 
 <header>
@@ -562,7 +731,7 @@ Moj cilj je da klijent dobije jasno objašnjenje svog pravnog položaja, mogućn
 <div class="title">Prekršajno pravo</div>
 <div class="btn">Pogledaj više</div>
 <div class="overlay">
-~Zastupanje o prekršajnim postupcima pred sudovima<br>
+~Zastupanje u prekršajnim postupcima pred sudovima<br>
 ~Sastavljanje žalbi na prekršaje naloge i odluke<br>
 ~Zastupanje pred policijskim i inspekcijskim organima<br>
 ~Analiza zakonitosti izrečenih kazni i mjera<br>
